@@ -1,5 +1,6 @@
-//copyright 2008 Jarrett Vance
-//http://jvance.com
+// product.liquid
+// <input type="hidden" id="product_id" value="{{ product.id }}">
+  
 $.fn.rater = function(options) {
     var opts = $.extend({}, $.fn.rater.defaults, options);
     return this.each(function() {
@@ -41,7 +42,7 @@ $.fn.rater.rate = function($this, opts, rating) {
             url: opts.postHref,
             type: "POST",
             data: {rate: rating, product_id: $("#product_id").val() },
-            
+          
             success: function(reponse) {
 
                 opts.rating = reponse.rating;
