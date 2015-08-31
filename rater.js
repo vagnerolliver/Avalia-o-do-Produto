@@ -1,4 +1,4 @@
-// product.liquid
+// Product.liquid
 // <input type="hidden" id="product_id" value="{{ product.id }}">
   
 $.fn.rater = function(options) {
