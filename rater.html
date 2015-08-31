@@ -1,0 +1,34 @@
+<style type="text/css">
+.stat  {
+  margin: 10px 0;
+  top: 20px;
+  position: relative;
+ }
+.clone .stat { position: static; }
+.stat label { font-weight: normal; }
+.statVal  { display: inline-block; }
+
+/* RATER PLUGIN */
+.ui-rater>span { vertical-align:top; }
+.ui-rater-rating { margin-left:0 }
+.ui-rater-starsOff, .ui-rater-starsOn {display:inline-block; height:18px; background:url(/images/stars.png) repeat-x 0 0px;}
+.ui-rater-starsOn {display:block; max-width:90px; top:0; background-position: 0 -36px;}
+.ui-rater-starsHover {background-position: 0 -18px!important; }
+
+</style>
+<script type="text/javascript">
+  $(function() {
+    $('.Rater').rater({ postHref: '/avaliacao' });
+  });
+</script>
+<div class="stat Rater">
+  <label for="rating">Avalie este produto:</label>
+  <div class="statVal">
+    <span class="ui-rater">
+      {% assign rating_1 = product.rating.rating | round: 2 %}
+      {% assign rating_1 = rating_1 | times: 2 %}
+      <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:{{ rating_1 | replace:'.','' }}%"></span></span>
+      (média: <span class="ui-rater-rating">{{ product.rating.rating }}</span> de <span class="ui-rater-rateCount">{{ product.rating.votes }}</span> votos.)
+    </span>
+  </div>
+</div>
